@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811f75413020e4a0b9aa9b8993624a6a, type: 3}
+  m_Name: Matmeca Bee
+  m_EditorClassIdentifier: 
+  name: Matmeca Bee
+  description: 
+  frontSprite: {fileID: 21300000, guid: 7238854961e43402d86253eaf66db6c5, type: 3}
+  backSprite: {fileID: 21300000, guid: 04a123abfe52e47c6ac2dca587c54cc0, type: 3}
+  type1: 4
+  type2: 0
+  maxHp: 50
+  attack: 50
+  defense: 50
+  spAttack: 50
+  spDefense: 50
+  speed: 50
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 63b80f65a9ead488ab20caa11ac58a23, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 4085e6b71ff6c433e9c548ee40dedca8, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 0c844b83d56904cac8275b321dbd3cfa, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 59e8e1c87f9974d3e91bcdf472ec5bbe, type: 2}
+    level: 1
