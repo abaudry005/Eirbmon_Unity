@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class BattleDialogBox : MonoBehaviour
 {
-    [SerializeField] int lettersPerSecond;
+    [SerializeField] int letterPerSecond;
     [SerializeField] Color highlightedColor;
-
     [SerializeField] Text dialogText;
     [SerializeField] GameObject actionSelector;
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
-
     [SerializeField] List<Text> actionTexts;
     [SerializeField] List<Text> moveTexts;
 
@@ -24,15 +21,15 @@ public class BattleDialogBox : MonoBehaviour
         dialogText.text = dialog;
     }
 
-    public IEnumerator TypeDialog(string dialog)
+    
+    public IEnumerator TypeDialog(string dialog) //affichage d'un texte lettre par lettre
     {
-        dialogText.text = "";
-        foreach (var letter in dialog.ToCharArray())
+        dialogText.text="";
+        foreach(var letter in dialog.ToCharArray())
         {
-            dialogText.text += letter;
-            yield return new WaitForSeconds(1f/lettersPerSecond);
+            dialogText.text+=letter;
+            yield return new WaitForSeconds(1f/letterPerSecond);
         }
-
         yield return new WaitForSeconds(1f);
     }
 
@@ -52,39 +49,46 @@ public class BattleDialogBox : MonoBehaviour
         moveDetails.SetActive(enabled);
     }
 
-    public void UpdateActionSelection(int selectedAction)
-    {
-        for (int i=0; i<actionTexts.Count; ++i)
+    public void UpdateActionSelection(int selectedAction){
+
+        for(int i=0; i<actionTexts.Count;i++)
         {
-            if(i == selectedAction)
-                actionTexts[i].color = highlightedColor;
-            else
-                actionTexts[i].color = Color.black;
+            if(i== selectedAction){
+                actionTexts[i].color=highlightedColor;
+            }
+            else{
+                actionTexts[i].color=Color.black;
+            }
         }
     }
 
-    public void UpdateMoveSelection(int selectedMove, Move move)
-    {
-        for (int i=0; i<moveTexts.Count; ++i)
+    public void UpdateMoveSelection(int selectedMove, Move move){
+
+        for(int i=0; i<moveTexts.Count;i++)
         {
-            if (i == selectedMove)
-                moveTexts[i].color = highlightedColor;
-            else
-                moveTexts[i].color = Color.black;
+            if(i== selectedMove){
+                moveTexts[i].color=highlightedColor;
+            }
+            else{
+                moveTexts[i].color=Color.black;
+            }
         }
 
-        ppText.text = $"PP{move.PP}/{move.Base.PP}";
-        typeText.text = move.Base.Type.ToString();
+        ppText.text= $"PP {move.PP}/{move.Base.GetPp()}";
+        typeText.text=move.Base.GetType().ToString();
     }
 
+    //set the right moves for the pokemon
     public void SetMoveNames(List<Move> moves)
     {
-        for (int i=0; i<moveTexts.Count; ++i)
-        {
-            if (i < moves.Count)
-                moveTexts[i].text = moves[i].Base.Name;
-            else
-                moveTexts[i].text = "-";
+        for (int i=0; i<moveTexts.Count;i++){
+            if(i<moves.Count)
+            {
+                moveTexts[i].text= moves[i].Base.name;
+            }  
+            else{
+                moveTexts[i].text="-";
+            }
         }
     }
 }
